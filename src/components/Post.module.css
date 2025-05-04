@@ -61,6 +61,7 @@
    color: var(--green-500);
    text-decoration: none;
    transition: color 0.2s;
+   border-radius: 2px;
 }
 
 .content a:hover {
@@ -116,4 +117,8 @@
 
 .commentPost button[type=submit]:hover {
    background: var(--green-300);
+}
+
+.commentList {
+   margin-top: 2rem;
 }
