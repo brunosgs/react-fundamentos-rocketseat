@@ -1,26 +1,41 @@
+import { format, formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
 import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 import styles from './Post.module.css'
 
-export function Post() {
+export function Post({ author, content, publishedAt }) {
+   const publishedDateFormatted = format(publishedAt, "dd 'de' LLLL 'às' HH:mm'h'", {
+      locale: ptBR
+   });
+
+   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+      addSuffix: true,
+      locale: ptBR
+   });
+
    return (
       <article className={styles.post}>
          <header>
             <div className={styles.author}>
-               <Avatar src="https://github.com/brunosgs.png" />
+               <Avatar src={author.avatarUrl} />
                <div className={styles.authorInfo}>
-                  <strong>Bruno</strong>
-                  <span>Wev Developer</span>
+                  <strong>{author.name}</strong>
+                  <span>{author.role}</span>
                </div>
             </div>
-            <time title="03 de Maio às 16:02h" datetime="2025-05-03 16:02:36">Publicado há 1h</time>
+            <time title={publishedDateFormatted} datetime={publishedAt.toISOString()}>
+               {publishedDateRelativeToNow}
+            </time>
          </header>
          <div className={styles.content}>
-            <p>Fala galeraa 👋</p>
-            <p>Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀</p>
-            <p>
-               👉{' '}<a href="">bruno.g/doctorcare</a>
-            </p>
+            {content.map(line => {
+               if (line.type === 'paragraph') {
+                  return <p>{line.content}</p>
+               } else if (line.type === 'link') {
+                  return <p><a href="#">{line.content}</a></p>
+               }
+            })}
             <p>
                <a href="">#novoprojeto {' '}</a>
                <a href="">#nlw {' '}</a>

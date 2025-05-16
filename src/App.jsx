@@ -5,6 +5,55 @@ import { Header } from "./components/Header";
 import { Post } from "./components/Post";
 import { Sidebar } from "./components/Sidebar";
 
+const posts = [
+   {
+      id: 1,
+      author: {
+         avatarUrl: 'https://github.com/brunosgs.png',
+         name: 'Bruno',
+         role: 'Developer'
+      },
+      content: [
+         {
+            type: 'paragraph',
+            content: 'Fala galeraa 👋'
+         },
+         {
+            type: 'paragraph',
+            content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'
+         },
+         {
+            type: 'link',
+            content: 'bruno.g/doctorcare'
+         }
+      ],
+      publishedAt: new Date('2025-05-07 22:28:00')
+   },
+   {
+      id: 2,
+      author: {
+         avatarUrl: 'https://github.com/diego3g.png',
+         name: 'Diego',
+         role: 'CTO'
+      },
+      content: [
+         {
+            type: 'paragraph',
+            content: 'Fala galeraa 👋'
+         },
+         {
+            type: 'paragraph',
+            content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'
+         },
+         {
+            type: 'link',
+            content: 'diego3g/doctorcare'
+         }
+      ],
+      publishedAt: new Date('2025-05-15 12:56:47')
+   }
+]
+
 export function App() {
    return (
       <div>
@@ -12,14 +61,15 @@ export function App() {
          <div className={styles.wrapper}>
             <Sidebar />
             <main>
-               <Post
-                  author="Bruno"
-                  content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi quod dicta eligendi deserunt quibusdam perferendis fugiat ad quaerat dignissimos, atque vel? Ipsam laborum accusantium, consectetur totam laudantium sapiente quo!"
-               />
-               <Post
-                  author="Bruno"
-                  content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam commodi quod dicta eligendi deserunt quibusdam perferendis fugiat ad quaerat dignissimos, atque vel? Ipsam laborum accusantium, consectetur totam laudantium sapiente quo!"
-               />
+               {posts.map(post => {
+                  return (
+                     <Post
+                        author={post.author}
+                        content={post.content}
+                        publishedAt={post.publishedAt}
+                     />
+                  )
+               })}
             </main>
          </div>
       </div>
