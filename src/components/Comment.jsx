@@ -14,7 +14,7 @@ export function Comment({ content }) {
                <header>
                   <div className={styles.authorAndTime}>
                      <strong>Bruno</strong>
-                     <time title="03 de Maio às 16:02h" datetime="2025-05-03 16:02:36">Cerca de 23h atrás</time>
+                     <time title="03 de Maio às 16:02h" dateTime="2025-05-03 16:02:36">Cerca de 23h atrás</time>
                   </div>
                   <button title="Deletar comentário">
                      <Trash size={24} />
