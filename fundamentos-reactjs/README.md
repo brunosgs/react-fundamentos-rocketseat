@@ -4,7 +4,7 @@ Este repositório contém os projetos desenvolvidos durante o curso de ReactJS, 
 
 ## 🛠️ Tecnologias Utilizadas
 - ReactJS
-- TypeScript
+- Javascript
 - Vite
 
 ## 🚀 Como Executar
