@@ -10,8 +10,22 @@ export function Comment({ content, onDeleteComment }) {
       onDeleteComment(content)
    }
 
+   /* 
+      O que é Closure?
+      - Em JS, uma closure é uma função que tem acesso ao escopo
+      onde foi criada, mesmo após esse escopo ter sido encerrado.
+      Ela "lembra" do ambiente em que foi criada.
+      
+      1 - Mecanismo do React: Quando você passa uma função para o setLikeCount, 
+      o React garante que essa função receberá o valor MAIS RECENTE do estado como 
+      argumento (state no caso).
+      2 - Fila de atualizações: O React mantém uma fila interna de atualizações 
+      de estado. Cada função na fila recebe o resultado da anterior.  
+   */
    function handleLikeComment() {
-      setLikeCount(likeCount + 1)
+      setLikeCount((state) => {
+         return state + 1
+      });
    }
 
    return (
